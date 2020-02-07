@@ -482,6 +482,8 @@ export default class GooglePlacesAutocomplete extends Component {
               this.setState({
                 dataSource: this.buildRowsFromResults(results),
               });
+
+              this.props.onResult(results.length > 0);
             }
           }
           if (typeof responseJSON.error_message !== 'undefined') {
