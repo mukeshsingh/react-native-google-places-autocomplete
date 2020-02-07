@@ -412,6 +412,8 @@ export default class GooglePlacesAutocomplete extends Component {
               this.setState({
                 dataSource: this.buildRowsFromResults(results),
               });
+
+              this.props.onResult(results.length > 0);
             }
           }
           if (typeof responseJSON.error_message !== 'undefined') {
@@ -751,6 +753,7 @@ GooglePlacesAutocomplete.propTypes = {
   keyboardAppearance: PropTypes.oneOf(['default', 'light', 'dark']),
   onPress: PropTypes.func,
   onNotFound: PropTypes.func,
+  onResult: PropTypes.func,
   onFail: PropTypes.func,
   minLength: PropTypes.number,
   fetchDetails: PropTypes.bool,
@@ -797,6 +800,7 @@ GooglePlacesAutocomplete.defaultProps = {
   keyboardAppearance: 'default',
   onPress: () => {},
   onNotFound: () => {},
+  onResult: () => {},
   onFail: () => {},
   minLength: 0,
   fetchDetails: false,
